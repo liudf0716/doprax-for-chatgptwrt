@@ -1,5 +1,11 @@
+# Dockerfile
+# write a Docker file that install shadowsocks and kcptun server
+
 FROM ubuntu:22.04
 MAINTAINER liudengfeng <liudf0716@gmail.com>
+
+# expose port
+EXPOSE 29900-29999
 
 # set ENV
 ENV SS_PASSWORD 123456
@@ -26,3 +32,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -p /usr/sbin
 COPY entrypoint.sh /usr/sbin/entrypoint.sh
+
+# SET ENTRYPOINT
+ENTRYPOINT ["/usr/sbin/entrypoint.sh"]
