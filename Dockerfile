@@ -15,14 +15,11 @@ ENV KCP_PORT 29900-29999
 
 # install shadowsocks-libev
 RUN apt-get update
-RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:max-c-lv/shadowsocks-libev
-RUN apt-get update
 RUN apt-get install -y shadowsocks-libev
 
 # install kcptun server
 RUN apt-get install -y wget
-RUN wget https://gh2.yanqishui.work/https://github.com/xtaci/kcptun/releases/download/v20230214/kcptun-linux-amd64-20230214.tar.gz
+RUN wget https://github.com/xtaci/kcptun/releases/download/v20230214/kcptun-linux-amd64-20230214.tar.gz
 RUN tar -zxvf kcptun-linux-amd64-20230214.tar.gz
 RUN mkdir -p /usr/bin/kcptun-server
 RUN mv server_linux_amd64 /usr/bin/kcptun-server
