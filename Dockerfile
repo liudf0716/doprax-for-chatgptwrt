@@ -13,9 +13,12 @@ ENV SS_METHOD aes-256-cfb
 ENV KCP_PORT 29900-29999
 
 
-# install shadowsocks
-RUN apt-get update && apt-get install -y python-pip
-RUN pip install shadowsocks
+# install shadowsocks-libev
+RUN apt-get update
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:max-c-lv/shadowsocks-libev
+RUN apt-get update
+RUN apt-get install -y shadowsocks-libev
 
 # install kcptun server
 RUN apt-get install -y wget
